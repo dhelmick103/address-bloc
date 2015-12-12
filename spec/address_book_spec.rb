@@ -1,6 +1,6 @@
 require_relative '../models/address_book'
 
-Rspec.describe AddressBook do
+RSpec.describe AddressBook do
   let(:book) { AddressBook.new }
   describe "attributes" do
     it "should respond to entries" do
@@ -19,7 +19,7 @@ Rspec.describe AddressBook do
     end
   end
 
-describe "#add_entry" do
+  describe "#add_entry" do
   it "adds only one entry to the address book" do
     book = AddressBook.new
     book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
@@ -35,9 +35,9 @@ describe "#add_entry" do
     expect(new_entry.name).to eq('Ada Lovelace')
     expect(new_entry.phone_number).to eq('010.012.1815')
     expect(new_entry.email).to eq('augusta.king@lovelace.com')
-    end
   end
 
+  end
   describe "#import_from_csv" do
     it "imports the correct number of entries" do
       book.import_from_csv("entries.csv")
@@ -50,7 +50,7 @@ describe "#add_entry" do
       book.import_from_csv("entries.csv")
 
       entry_one = book.entries[0]
-      check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com"
+      check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com")
       expect(entry_one.name).to eq "Bill"
       expect(entry_one.phone_number).to eq "555-555-4854"
       expect(entry_one.email).to eq "bill@blocmail.com"
@@ -74,31 +74,32 @@ describe "#add_entry" do
       check_entry(entry_three, "Joe", "555-555-3660", "joe@blocmail.com")
       expect(entry_three.name).to eq "Joe"
       expect(entry_three.phone_number).to eq "555-555-3660"
-      expect(entry_three.email) to eq "joe@blocmail.com"
+      expect(entry_three.email).to eq "joe@blocmail.com"
     end
 
     it "imports the 4th entry" do
       book.import_from_csv("entries.csv")
-      check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
       entry_four = book.entries[3]
+      check_entry(entry_four, "Sally", "555-555-4646", "sally@blocmail.com")
       expect(entry_four.name).to eq "Sally"
       expect(entry_four.phone_number).to eq "555-555-4646"
-      expect(entry_four.email) to eq "sally@blocmail.com"
+      expect(entry_four.email).to eq "sally@blocmail.com"
     end
 
     it "imports the 5th entry" do
       book.import_from_csv("entries.csv")
       entry_five = book.entries[4]
-      check_entry(entry_five, "Sussie", "555-555-20136", "sussie@blocmail.com")
+      check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
       expect(entry_five.name).to eq "Sussie"
       expect(entry_five.phone_number).to eq "555-555-2036"
-      expect(entry_five.email) to eq "sussie@blocmail.com"
+      expect(entry_five.email).to eq "sussie@blocmail.com"
     end
+  end
 
-    def check_entry(entry, expected_name, expected_number, expected_email)
-      expect(entry.name).to eq expected_name
-      expect(entry.phone_number).to eq expected_number
-      expect(entry.email).to eq expected_email
+  def check_entry(entry, expected_name, expected_number, expected_email)
+    expect(entry.name).to eq expected_name
+    expect(entry.phone_number).to eq expected_number
+    expect(entry.email).to eq expected_email
 
   end
 end
