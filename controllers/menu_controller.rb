@@ -14,7 +14,7 @@ class MenuController
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - View Entry n"
+    puts "5 - Nuke all entries"
     puts "6 - Exit"
     print "Enter your selection: "
 
@@ -39,9 +39,8 @@ class MenuController
       main_menu
     when 5
       system "clear"
-      puts "Which entry would you like to review?"
-      entry = gets.chomp
-      puts entries(entry)
+      @address_book.nuke
+      puts "All entries deleted!"
       main_menu
     when 6
       puts "Good-bye!"
@@ -194,5 +193,7 @@ class MenuController
       puts "#{selection} is not a valid input"
       puts entry.to_s
       search_submenu(entry)
-    end     
+    end
+  end
  end
+end 
